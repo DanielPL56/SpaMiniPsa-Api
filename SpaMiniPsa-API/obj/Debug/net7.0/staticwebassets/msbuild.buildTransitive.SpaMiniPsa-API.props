@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\SpaMiniPsa-API.props" />
+</Project>
