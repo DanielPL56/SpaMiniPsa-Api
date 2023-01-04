@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SpaMiniPsa_API.Entities;
+using SpaMiniPsa_API.Models;
 
 namespace SpaMiniPsa_API.Controllers
 {

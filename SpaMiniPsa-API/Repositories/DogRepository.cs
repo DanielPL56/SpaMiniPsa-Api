@@ -1,4 +1,5 @@
 using SpaMiniPsa_API.Entities;
+using SpaMiniPsa_API.Models;
 
 namespace SpaMiniPsa_API.Repositories;
 
@@ -16,6 +17,8 @@ public class DogRepository : EntityFrameworkBase<Dog>, IDogRepository
             dog.Name = modifiedDog.Name;
             dog.Breed = modifiedDog.Breed;
             dog.DateOfBirth = modifiedDog.DateOfBirth;
+            dog.isDewormedFirstTime = modifiedDog.isDewormedFirstTime;
+            dog.DateOfFirstDeworming = modifiedDog.DateOfFirstDeworming;
         }
 
         Table.Update(dog);

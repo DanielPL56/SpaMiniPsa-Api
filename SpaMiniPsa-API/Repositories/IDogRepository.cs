@@ -1,4 +1,5 @@
 ﻿using SpaMiniPsa_API.Entities;
+using SpaMiniPsa_API.Models;
 
 namespace SpaMiniPsa_API.Repositories
 {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpaMiniPsa_API.Entities;
+using SpaMiniPsa_API.Models;
 using SpaMiniPsa_API.Repositories;
 using System.Collections;
 

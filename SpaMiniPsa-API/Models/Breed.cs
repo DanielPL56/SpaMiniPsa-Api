@@ -1,4 +1,4 @@
-﻿namespace SpaMiniPsa_API.Entities
+﻿namespace SpaMiniPsa_API.Models
 {
     public class Breed
     {
