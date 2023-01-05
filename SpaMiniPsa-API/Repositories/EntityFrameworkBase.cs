@@ -60,14 +60,5 @@ namespace SpaMiniPsa_API.Repositories
                 throw new ArgumentNullException(errorMessage);
             }
         }
-
-        //public void Update(int id, TEntity modifiedObj)
-        //{
-        //    var obj = Table.Find(id);
-        //    obj = modifiedObj;
-
-        //    Table.Update(obj);
-        //    Context.SaveChanges();
-        //}
     }
 }

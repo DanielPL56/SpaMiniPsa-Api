@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpaMiniPsa_API.Entities;
 
@@ -13,7 +14,12 @@ public class Dog
 
     public bool isDewormedFirstTime { get; set; }
     public DateTime? DateOfFirstDeworming { get; set; }
+    public byte[]? Image { get; set; }
 
+
+    //public string? ImageName { get; set; }
+    //[NotMapped]
+    //public IFormFile? ImageFile { get; set; }
     //public string DateOfFirstDeworming => DateOfBirth.AddDays(3 * 7).ToShortDateString(); // First deworming of dog up to 3 weeks
     public string DateOfSecondDeworming => DateOfBirth.AddDays(5 * 7).ToShortDateString(); // Second up to 5 weeks
     public string DateOfThirdDeworming => DateOfBirth.AddDays(7 * 7).ToShortDateString(); // third up to 7 weeks

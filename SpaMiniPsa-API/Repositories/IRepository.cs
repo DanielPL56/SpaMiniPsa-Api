@@ -8,6 +8,5 @@ namespace SpaMiniPsa_API.Repositories
         public IEnumerable<TEntity> GetAll();
         public void Add(TEntity obj);
         public void Delete(int id);
-        //public void Update(int id, TEntity obj);
     }
 }

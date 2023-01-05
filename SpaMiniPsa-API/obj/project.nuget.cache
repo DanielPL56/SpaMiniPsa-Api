@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WmUW8Ri4x725gfxkBMCZHCqf5DXYtL0oU5Ae3Mkv/4NHvWhzmQvQQi14Ys20J1I7Q3z7DszmCTe9H78bicXI1w==",
+  "dgSpecHash": "pVxitMkMQ8+HJOmZCDYBi/j9GvKNQyk9bhD1JXQUhUaq2HaeZ77uolLepPgXssbafAHHSp+BfSbyKAZyGq/xQw==",
   "success": true,
   "projectFilePath": "C:\\Users\\minij\\Desktop\\Yorkland\\SpaMiniPsa-API\\SpaMiniPsa-API\\SpaMiniPsa-API.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\minij\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\minij\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\minij\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\minij\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\minij\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\minij\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\minij\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

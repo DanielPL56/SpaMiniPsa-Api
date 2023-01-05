@@ -8,5 +8,5 @@ public class DataContext : DbContext
 {
     public DataContext(DbContextOptions options) : base(options) { }
 
-    public DbSet<Dog> dogs { get; set; }
+    public DbSet<Dog> Dogs { get; set; }
 }
