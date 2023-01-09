@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SpaMiniPsa_API.Entities;
 using SpaMiniPsa_API.Models;
 using SpaMiniPsa_API.Repositories;
-using System.Collections;
 
 namespace SpaMiniPsa_API.Controllers
 {
@@ -14,12 +11,10 @@ namespace SpaMiniPsa_API.Controllers
     public class DogController : ControllerBase
     {
         private IDogRepository _dogRepository;
-        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public DogController(IDogRepository dogRepository, IWebHostEnvironment hostEnvironment)
+        public DogController(IDogRepository dogRepository)
         {
             _dogRepository = dogRepository;
-            _hostEnvironment = hostEnvironment;
         }
 
         [HttpGet("{id}")]
@@ -41,61 +36,54 @@ namespace SpaMiniPsa_API.Controllers
             return _dogRepository.GetAll();
         }
 
-        [HttpPost]
-        public void AddDog(Dog dog)
-        {
-            _dogRepository.Add(dog);
-        }
-
         [HttpPost("AddDogWithImage")]
-        public void SaveFile([FromForm] FileUpload fileObj)
+        public void AddDogWithImage([FromForm] FileUpload fileObj)
         {
-            var oDog = JsonConvert.DeserializeObject<Dog>(fileObj.Dog);
+            Dog dog = JsonConvert.DeserializeObject<Dog>(fileObj.Dog);
+            List<Image> dogImages = new List<Image>();
+            
+            var files = fileObj.Files;
 
-            if (fileObj.File.Length > 0)
+            if (files != null && files.Count > 0)
             {
-                using (var memoryStream = new MemoryStream())
+                foreach (var file in files)
                 {
-                    fileObj.File.CopyTo(memoryStream);
-                    var fileBytes = memoryStream.ToArray();
-                    oDog.Image = fileBytes;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        file.CopyTo(memoryStream);
+                        var bytes = memoryStream.ToArray();
 
-                    _dogRepository.Add(oDog);
+                        Image img = new Image();
+                        img.File = bytes;
+                        dogImages.Add(img);
+                    }
                 }
+                dog.Images = dogImages;
             }
-        }
 
-        [HttpGet("GetDogWithImage/{id}")]
-        public Dog GetSavedDog(int id)
-        {
-            var dog = _dogRepository.Get(id);
-            //dog.Photo = GetImage(Convert.ToBase64String(dog.Photo));
-            return dog;
-            //return dog;
-        }
-
-        [NonAction]
-        public byte[] GetImage(string sBase64String)
-        {
-            byte[] bytes = null;
-            if (!string.IsNullOrEmpty(sBase64String))
-            {
-                bytes = Convert.FromBase64String(sBase64String);
-            }
-            return bytes;
+            _dogRepository.Add(dog);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteDog(int id)
         {
+            _dogRepository.Delete(id);
+
+            return Ok();
+        }
+
+        [HttpDelete("DeleteDogWithImage/{id}")]
+        public IActionResult DeleteDogWithImage(int id) 
+        {
             try
             {
-                _dogRepository.Delete(id);
+                _dogRepository.DeleteDogWithImage(id);
                 return Ok();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+                throw;
             }
         }
 
@@ -103,30 +91,6 @@ namespace SpaMiniPsa_API.Controllers
         public void UpdateDog(int id, Dog modifiedDog)
         {
             _dogRepository.Update(id, modifiedDog);
-        }
-
-        //[HttpPost("AddDogWithImage")]
-        //public async Task<ActionResult> AddDogWithImage([FromForm] Dog dog)
-        //{
-        //    if (dog.ImageFile != null) dog.ImageName = await SaveImage(dog.ImageFile);
-        //    _dogRepository.Add(dog);
-
-        //    return StatusCode(201);
-        //}
-
-        [NonAction]
-        public async Task<string> SaveImage(IFormFile imageFile)
-        {
-            string imageName = new string(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
-            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
-
-            using (var fileStream = new FileStream(imagePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(fileStream);
-            }
-
-            return imageName;
         }
     }
 }

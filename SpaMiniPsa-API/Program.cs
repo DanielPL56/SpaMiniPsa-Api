@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration["Data:ConnectionStrings:defaultConnection"];
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<DataContext>(options => options.UseLazyLoadingProxies().UseSqlServer(connectionString));
 builder.Services.AddTransient<IDogRepository, DogRepository>();
 // TODO: Use this along with args -> `_context.Database.Migrate();`
 

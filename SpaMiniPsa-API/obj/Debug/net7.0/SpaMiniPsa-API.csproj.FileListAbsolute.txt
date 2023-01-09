@@ -75,3 +75,5 @@ C:\Users\minij\Desktop\Yorkland\SpaMiniPsa-API\SpaMiniPsa-API\obj\Debug\net7.0\r
 C:\Users\minij\Desktop\Yorkland\SpaMiniPsa-API\SpaMiniPsa-API\obj\Debug\net7.0\SpaMiniPsa-API.pdb
 C:\Users\minij\Desktop\Yorkland\SpaMiniPsa-API\SpaMiniPsa-API\obj\Debug\net7.0\SpaMiniPsa-API.genruntimeconfig.cache
 C:\Users\minij\Desktop\Yorkland\SpaMiniPsa-API\SpaMiniPsa-API\obj\Debug\net7.0\ref\SpaMiniPsa-API.dll
+C:\Users\minij\Desktop\Yorkland\SpaMiniPsa-API\SpaMiniPsa-API\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\minij\Desktop\Yorkland\SpaMiniPsa-API\SpaMiniPsa-API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Proxies.dll

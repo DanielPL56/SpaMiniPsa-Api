@@ -6,11 +6,11 @@ namespace SpaMiniPsa_API.Repositories
     {
         protected DbSet<TEntity> Table;
 
-        protected DbContext Context;
+        protected DataContext Context;
 
         const string errorMessage = "There is no such record in Database";
 
-        protected EntityFrameworkBase(DbContext dbContext)
+        protected EntityFrameworkBase(DataContext dbContext)
         {
             Context = dbContext;
             Table = Context.Set<TEntity>();
@@ -21,7 +21,7 @@ namespace SpaMiniPsa_API.Repositories
             Context.Dispose();
         }
 
-        public void Add(TEntity obj)
+        public virtual void Add(TEntity obj)
         {
             Table.Add(obj);
             Context.SaveChanges();
@@ -46,7 +46,7 @@ namespace SpaMiniPsa_API.Repositories
             }
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             var objToDelete = Get(id);
 

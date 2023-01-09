@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpaMiniPsa_API.Repositories;
 
@@ -11,16 +12,15 @@ using SpaMiniPsa_API.Repositories;
 namespace SpaMiniPsaAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230106130602_ReplaceImageToImages")]
+    partial class ReplaceImageToImages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.1")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -43,16 +43,12 @@ namespace SpaMiniPsaAPI.Migrations
                     b.Property<DateTime?>("DateOfFirstDeworming")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDewormedFirstTime")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ProfileImage")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<bool>("isDewormedFirstTime")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
